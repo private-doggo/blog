@@ -20,4 +20,10 @@ public class BlogController {
         model.addAttribute("title", "Блог");
         return "blog-main";
     }
+
+    @GetMapping("/blog/add")
+    public String blogAdd(Model model) {
+        model.addAttribute("title", "Добавление статьи");
+        return "blog-add";
+    }
 }
