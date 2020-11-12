@@ -9,11 +9,11 @@
     <header th:insert="blocks/header :: header"></header>
 
     <div class="container mt-5">
-        <h1 th:text="${title}"/>
+        <h1 th:text="${title}"/><br>
         <div th:each="el : ${posts}" class="alert alert-info mt-2">
             <h3 th:text="${el.title}"/>
             <p th:text="${el.anons}"/>
-            <a th:href="'/blog/' + ${el.id}">Детальнее</a>
+            <a th:href="'/blog/' + ${el.id}" class="btn btn-warning">Детальнее</a>
         </div>
     </div>
 
