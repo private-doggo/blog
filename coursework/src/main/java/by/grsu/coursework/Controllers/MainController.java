@@ -18,4 +18,9 @@ public class MainController {
         model.addAttribute("title", "О нас");
         return "about";
     }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
 }
