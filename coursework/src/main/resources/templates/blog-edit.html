@@ -9,13 +9,14 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="container mb-5">
-    <h1>Редактирование статьи</h1><br>
+    <h1>Article edit</h1><br>
     <div th:each="el : ${post}">
     <form method="post">
-        <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
-        <input type="text" th:value="${el.anons}" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
-        <textarea name="full_text" th:text="${el.full_text}" placeholder="Введите полный текст статьи" class="form-control"/><br>
-        <button type="submit" class="btn btn-success">Обновить</button>
+        <input type="text" th:value="${el.title}" name="title" placeholder="Article full name" class="form-control"><br>
+        <input type="text" th:value="${el.anons}" name="anons" placeholder="Article date" class="form-control"><br>
+        <input type="text" name="author" style="display: none;">
+        <textarea name="full_text" th:text="${el.full_text}" placeholder="Article full text" class="form-control"/><br>
+        <button type="submit" class="btn btn-success">Edit</button>
     </form>
 </div>
 

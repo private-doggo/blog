@@ -12,11 +12,14 @@
     <div th:each="el : ${post}" class="alert alert-info mt-2">
         <h1 th:text="${el.title}"/>
         <p th:text="${el.full_text}"/>
-        <p><b>Просмотры:</b> <span th:text="${el.views}"/></p>
+        <div class="container row">
+            <p><b>Views:</b> <span th:text="${el.views}"/></p>&nbsp;
+            <p><b>Author:</b> <span th:text="${el.author}"/></p>
+        </div>
 
-        <a style="display: inline-block;" th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+        <a style="display: inline-block;" th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Edit</a>
         <form style="display: inline-block;" th:action="'/blog/' + ${el.id} + '/remove'" method="post">
-            <button class="btn btn-warning" type="submit">Удалить</button>
+            <button class="btn btn-warning" type="submit">Delete</button>
         </form>
     </div>
 </div>
