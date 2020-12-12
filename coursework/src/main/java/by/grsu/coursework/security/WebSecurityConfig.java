@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
@@ -20,7 +19,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/", "/home", "/error", "/blog", "/about").permitAll()
-                    .antMatchers("/blog/add", "/blog/{id}/edit").authenticated()
+                    .antMatchers("/blog/add", "/blog/{id}/edit", "/profile").authenticated()
+                    //.antMatchers("/blog/**", "/profile").authenticated()
                     //.anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -39,15 +39,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected UserDetailsService userDetailsService() {
         return new InMemoryUserDetailsManager (
-                User.withDefaultPasswordEncoder()
+                org.springframework.security.core.userdetails.User.withDefaultPasswordEncoder()
                         .username("user")
                         .password("password")
-                        .roles("USER")
+                        .roles(User.UserRole.USER.name())
                         .build(),
-                User.withDefaultPasswordEncoder()
+                org.springframework.security.core.userdetails.User.withDefaultPasswordEncoder()
                         .username("admin")
                         .password("password")
-                        .roles("ADMIN")
+                        .roles(User.UserRole.ADMIN.name())
                         .build()
         );
     }
