@@ -30,7 +30,7 @@ public class BlogController {
 
     @GetMapping("/blog/add")
     public String blogAdd(Model model) {
-        model.addAttribute("title", "Article add");
+        model.addAttribute("title", "New article");
         return "blog-add";
     }
 
