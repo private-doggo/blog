@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <div class="container">
+        <h1 th:text="${title}"/><br>
+        <div class="container row">
+            <p>You are signed in as:&nbsp;</p>
+            <b>[[${#httpServletRequest.remoteUser}]]</b>
+        </div>
+        <br>
+        <form th:action="@{/logout}" method="post">
+            <input class="btn btn-outline-primary" type="submit" value="Sign Out"/>
+        </form>
+    </div>
+
+    <footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
